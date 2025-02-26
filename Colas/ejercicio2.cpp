@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// Estructura del nodo con nombre y género (0 = Mujer, 1 = Hombre)
 struct nodo {
     string nombre;
     int genero; // 0 para mujer, 1 para hombre
@@ -86,7 +85,7 @@ int main() {
 
 // Inicializar la cola
 void inicializa(struct cola &q) {
-   q.delante = NULL; // apunta al primer elemento
+   q.delante = NULL; 
     q.atras = NULL;
 }
 
@@ -167,7 +166,7 @@ void limpiarPantalla() {
 void desencola(struct cola &q)
 {
     struct nodo *p;
-    p = q.delante; // apunta al primer elemento
+    p = q.delante; 
     q.delante = (q.delante)->sgte;
     delete (p);
    
