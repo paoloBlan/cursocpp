@@ -74,6 +74,7 @@ int main()
             posicion = buscarEnPila(p, nombre);
             if (posicion != -1)
             {
+                imprimir(p);
                 cout << "El nombre se encuentra en la posición: " << posicion + 1 << endl;
             }
             else
@@ -165,15 +166,16 @@ void buscarElementoCentral(ptrPila p)
 
 int buscarEnPila(ptrPila p, string nombre)
 {
-    int contador = 1;
+    int contador = 0;
     while (p != NULL)
     {
         if (p->nombre == nombre)
         {
-            return contador++;
+            return contador;
         }
-        p = p->sgte;
         contador++;
+        p = p->sgte;
+        
     }
     return -1;
 }
