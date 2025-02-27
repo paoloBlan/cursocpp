@@ -1,5 +1,8 @@
 #include <iostream>
+#include <cstdlib>
 #include <string>
+#include <cstring>
+#include <stdio.h>
 #include <iomanip> // Para alinear texto
 
 using namespace std;
@@ -10,13 +13,14 @@ struct Nodo {
     Nodo* sgte;
 };
 
-using tDiccionario = Nodo*;
+typedef Nodo* tDiccionario;
 
-void insertar(tDiccionario& diccionario, const string& spanish, const string& english);
-void mostrar(tDiccionario diccionario);
-void buscarEnglishToSpanish(tDiccionario diccionario, const string& english);
-void buscarSpanishToEnglish(tDiccionario diccionario, const string& spanish);
-void mostrarDespuesPalabra(tDiccionario diccionario, const string& palabra);
+
+void insertar(tDiccionario& ,string, string);
+void mostrar(tDiccionario );
+void buscarEnglishToSpanish(tDiccionario,string);
+void buscarSpanishToEnglish(tDiccionario, string);
+void mostrarDespuesPalabra(tDiccionario, string);
 void mostrarMenu();
 void limpiarPantalla();
 
@@ -136,17 +140,22 @@ void limpiarPantalla() {
 }
 
 
-void insertar(tDiccionario& diccionario, const string& spanish, const string& english) {
-    Nodo* nuevo = new Nodo{spanish, english, nullptr};
-    if (!diccionario) {
-        diccionario = nuevo;
-        return;
+void insertar(tDiccionario& diccionario,  string spanish, string english) {
+    tDiccionario di;
+    tDiccionario q = new Nodo;
+    q->spanish = spanish;
+    q->english = english;
+    q->sgte = nullptr;
+
+    if (diccionario == nullptr) {
+        diccionario = q;   
+    }else
+    {
+        di = diccionario;
+        while (di->sgte!= nullptr)
+            di = di->sgte;
+        di->sgte = q;
     }
-    Nodo* actual = diccionario;
-    while (actual->sgte) {
-        actual = actual->sgte;
-    }
-    actual->sgte = nuevo;
 }
 
 void mostrar(tDiccionario diccionario) {
@@ -159,19 +168,19 @@ void mostrar(tDiccionario diccionario) {
     }
 }
 
-void buscarEnglishToSpanish(tDiccionario diccionario, const string& english) {
-    Nodo* actual = diccionario;
-    while (actual) {
-        if (actual->english == english) {
-            cout << "La traducción de '" << english << "' es '" << actual->spanish << "'." << endl;
+void buscarEnglishToSpanish(tDiccionario diccionario, string english) {
+   
+    while (diccionario) {
+        if (diccionario->english == english) {
+            cout << "La traducción de '" << english << "' es '" << diccionario->spanish << "'." << endl;
             return;
         }
-        actual = actual->sgte;
+        diccionario = diccionario->sgte;
     }
     cout << "No se encontró la traducción para '" << english << "'." << endl;
 }
 
-void buscarSpanishToEnglish(tDiccionario diccionario, const string& spanish) {
+void buscarSpanishToEnglish(tDiccionario diccionario, string spanish) {
     Nodo* actual = diccionario;
     while (actual) {
         if (actual->spanish == spanish) {
@@ -183,18 +192,18 @@ void buscarSpanishToEnglish(tDiccionario diccionario, const string& spanish) {
     cout << "No se encontró la traducción para '" << spanish << "'." << endl;
 }
 
-void mostrarDespuesPalabra(tDiccionario diccionario, const string& palabra) {
-    Nodo* actual = diccionario;
+void mostrarDespuesPalabra(tDiccionario diccionario, string palabra) {
+   
     bool encontrado = false;
 
-    while (actual) {
-        if (actual->spanish == palabra) {
+    while (diccionario) {
+        if (diccionario->spanish == palabra) {
             encontrado = true;
         }
         if (encontrado) {
-            cout << actual->spanish << " - " << actual->english << endl;
+            cout << diccionario->spanish << " - " << diccionario->english << endl;
         }
-        actual = actual->sgte;
+        diccionario = diccionario->sgte;
     }
 
     if (!encontrado) {

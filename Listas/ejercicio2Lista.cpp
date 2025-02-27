@@ -1,7 +1,9 @@
 #include <iostream>
+#include <cstdlib>
 #include <string>
-#include <iomanip> // Para alinear texto
-
+#include <cstring>
+#include <stdio.h>
+#include <iomanip>
 using namespace std;
 
 struct Nodo
@@ -14,10 +16,11 @@ struct Nodo
     Nodo *sgte;
 };
 
-using tProducto = Nodo *;
-using tGrupoA = Nodo *;
-using tGrupoB = Nodo *;
-using tGrupoC = Nodo *;
+typedef Nodo* tProducto;
+typedef Nodo* tGrupoA;
+typedef Nodo* tGrupoB;
+typedef Nodo* tGrupoC;
+
 
 float totalInversion = 0.0;
 float iGrupoA = 0.0;
@@ -118,18 +121,26 @@ int main()
 
 void insertar(tProducto &lista, string codigo, string descripcion, float precioCompra, int cantidad)
 {
-    Nodo *nuevo = new Nodo{codigo, descripcion, precioCompra, cantidad, nullptr};
-    if (!lista)
+    tProducto pro;
+    tProducto q = new Nodo;
+    q->codigo = codigo;
+    q->descripcion = descripcion;
+    q->cantidad = cantidad;
+    q->precioCompra = precioCompra;
+    q->sgte = nullptr;
+    
+    if (lista == nullptr)
     {
-        lista = nuevo;
-        return;
+        lista = q;
+        
+    }else {
+        pro = lista;
+        while (pro->sgte!= nullptr){
+            pro = pro->sgte;
+        }
+        pro->sgte = q;
     }
-    Nodo *actual = lista;
-    while (actual->sgte)
-    {
-        actual = actual->sgte;
-    }
-    actual->sgte = nuevo;
+    
 }
 
 float calcularInversion(float precioCompra, int cantidad)
