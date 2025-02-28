@@ -1,3 +1,13 @@
+/*
+    Se tiene artículos cada uno con los siguientes atributos: código, descripción, precio de compra y cantidad. 
+    Ordene estos artículos según el monto total de inversión (precio de compra * cantidad). 
+    Luego, clasifíquelos en tres grupos: 
+    grupo A, con aquellos artículos que tengan el 70 por ciento de la inversión total; 
+    grupo B, con aquellos artículos que concentren el 25 por ciento de la inversión total; y 
+    grupo C, con aquellos artículos que representen el 5 por ciento restante. Use listas doblemente enlazadas.
+
+*/
+
 #include <iostream>
 #include <cstdlib>
 #include <string>

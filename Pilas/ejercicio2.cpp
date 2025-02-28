@@ -1,3 +1,11 @@
+/*
+    Pila de estudiantes: nombre, edad. Se pide lo siguiente:
+        •	Elemento central.
+        •	Estudiantes mayores de edad.
+        •	Buscar un elemento y mostrar la posición
+
+*/
+
 #include <iostream>
 
 using namespace std;

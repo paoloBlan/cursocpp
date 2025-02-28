@@ -1,3 +1,12 @@
+/*
+    Se tiene una lista enlazada con un traductor electrónico en inglés/ castellano, se requiere hacer lo siguiente:
+        o	Ingrese una palabra en castellano y muestre sus significados en inglés
+        o	Ingrese una palabra en inglés y muestre sus significados en castellano
+        o	Ingrese una palabra y muestre todas las que siguen después de ella.
+
+
+*/
+
 #include <iostream>
 #include <cstdlib>
 #include <string>
