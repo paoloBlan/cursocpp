@@ -76,7 +76,7 @@ void registrar(bdAlumno& listaAlumno)
                       << left << setw(3) << a.edad << " "
                       << left << fixed << setprecision(2) << a.promedio << endl;
             insertar(listaAlumno, a);
-            cout << "\n¿DESEA REGISTRAR OTRO EMPLEADO?:";
+            cout << "\n¿DESEA REGISTRAR OTRO ALUMNO (s-S/n-N)?:";
             do
             {
                 cin >> dec;
@@ -116,9 +116,10 @@ void traerBd(bdAlumno& listaAlumnos)
         }
         bdAlumnos.close();
     }
-    cout << "\n Se cargo la base de dato a la lista (write any keys..): ";
-    cin.get();
-    cin.ignore();
+    cout << "\n Se cargo la base de dato a la lista (press s/S to continue.): ";
+    char key = cin.get();
+    
+    
 }
 
 int main()
@@ -129,6 +130,7 @@ int main()
     do
     {
         clrscr();
+        
         cout << "\n[A].- REGISTRAR ALUMNO ";
         cout << "\n[B].- MOSTRAR ALUMNOS ";
         cout << "\n[C].- MOSTRAR ALUMNOS MAYORES DE EDAD";
@@ -139,9 +141,13 @@ int main()
         {
             do
             {
+                
                 cout << "\nINGRESE UNA LETRA: ";
                 dec = toupper(cin.get());
-                cin.ignore();
+                if (dec == '\n') {
+                    continue;
+                }
+                
 
             } while (!isalpha(dec));
         } while (dec < 'A' || dec > 'F');
@@ -150,6 +156,7 @@ int main()
         {
             case 'A':
             {
+                cin.ignore();
                 registrar(listaAlumno);
                 break;
             }
@@ -157,41 +164,45 @@ int main()
             case 'B':
             {
             
+                cin.ignore();
                 mostrar(listaAlumno);
                 cout << "\n write (s/S) to continue: ";
                 dec = toupper(cin.get());
-                cin.ignore();
+                
                 break;
             }
 
             case 'C':
             {
             
+                cin.ignore();
                 mayoresEdad(listaAlumno);
                 cout << "\n write (s/S) to continue: ";
                 dec = toupper(cin.get());
-                cin.ignore();
+              
                 break;
             }
 
             case 'D':
             {
             
+                cin.ignore();
                 especialidadIngenieria(listaAlumno);
                 cout << "\n write (s/S) to continue: ";
                 dec = toupper(cin.get());
-                cin.ignore();
+                
                 break;
             }
 
             case 'E':
             {
             
+                cin.ignore();
                 ordenarPorNombre(listaAlumno);
                 mostrar(listaAlumno);
                 cout << "\n write (s/S) to continue: ";
                 dec = toupper(cin.get());
-                cin.ignore();
+                
                 break;
             }
         }
@@ -286,7 +297,6 @@ void ordenarPorNombre(bdAlumno& lista) {
         }
     } while (cambiado);
 }
-
 
 
 void toUpperCase(char* str) {
