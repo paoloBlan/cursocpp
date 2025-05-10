@@ -1,3 +1,9 @@
+/*
+    Realice un programa que ingrese los datos en una cola, 
+    luego divida en dos colas resultantes, teniendo como referencia 
+    para dividirlas el valor central de la cola.
+*/
+
 #include <iostream>
 
 using namespace std;

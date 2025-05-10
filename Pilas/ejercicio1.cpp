@@ -1,3 +1,7 @@
+/*
+    1.	Crear un programa que busque un elemento en una pila 
+    y reporte la posición en la que se encuentra.
+*/
 #include <iostream>
 
 using namespace std;

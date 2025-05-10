@@ -1,3 +1,9 @@
+/*
+    Se tiene una cola de hombre y mujeres con sus nombres,
+     se debe dividir la colar en dos resultantes, 
+     una para hombres y otra para mujeres.
+*/
+
 #include <iostream>
 
 using namespace std;
